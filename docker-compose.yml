@@ -1,0 +1,25 @@
+version: '3'
+services:
+    php-apache:
+        build: ./php-apache
+        container_name: DDT-apache
+        ports:
+            - 3010:80
+        volumes:
+            - .:/var/www:z
+        links:
+            - 'db'
+    db:
+        image: mysql:8.0
+        container_name: DDT-mysql
+        restart: always
+        volumes:
+            - DDT_mysql:/var/lib/mysql
+        ports:
+            - 4010:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: "rootpwd"
+        command: mysqld --sql_mode="" --default-time-zone=+01:00
+
+volumes:
+    DDT_mysql:
