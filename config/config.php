@@ -2,7 +2,7 @@
 
 return [
     'db' => [
-        'host' => '127.0.0.1:',
+        'host' => 'db',
         'database' => 'dtt',
         'username' => 'root',
         'password' => 'rootpwd',
