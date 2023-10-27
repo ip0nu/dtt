@@ -98,4 +98,20 @@ class Db implements IDb {
     public function getStatement(): ?PDOStatement {
         return $this->stmt;
     }
+
+    /**
+     * function that fetches the results of the query
+     */
+    public function fetch() {
+        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+
+    /**
+     * function that fetches the results of the query
+     */
+    public function count() {
+        return $this->stmt->fetchColumn();
+    }
+
 }

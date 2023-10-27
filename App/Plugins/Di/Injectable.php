@@ -27,6 +27,7 @@ abstract class Injectable {
 
         if (true === $bucket->hasShared($propertyName)) {
             $service = $bucket->getShared($propertyName);
+            //Deprecated: Creation of dynamic property is deprecated php 8.2
             $this->$propertyName = $service;
 
             return $service;
