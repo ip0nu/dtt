@@ -11,6 +11,6 @@ class TagController extends BaseController
     use \App\Controllers\Api\V1\Traits\update;
     use \App\Controllers\Api\V1\Traits\Read;
     use \App\Controllers\Api\V1\Traits\Delete;
-    protected string $factoryName = 'App/Factories/TagFactory';
-    protected string $boundModelName = 'App/Models/TagModel';
+    protected string $factoryName = 'App\Factories\TagFactory';
+    protected string $boundModelName = 'App\Models\TagModel';
 }

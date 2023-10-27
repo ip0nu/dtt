@@ -4,9 +4,9 @@ namespace App\Factories;
 
 abstract class BaseFactory
 {
-    protected App\Plugins\Db $db;
+    protected $db;
     protected $boundModel;
-    public function __construct(App\Plugins\Db $db, string $boundModelName) {
+    public function __construct($db, string $boundModelName) {
         $this->db = $db;
         $this->boundModel = new $boundModelName($db);
     }
@@ -16,7 +16,11 @@ abstract class BaseFactory
         return $this->boundModel->getListResults($page);
     }
 
-    public function getTotalRowCount(): array
+    public function buildById(int $id) {
+        return $this->boundModel->getById($id);
+    }
+
+    public function getTotalRowCount(): int
     {
         return $this->boundModel->getTotalRowCount();
     }

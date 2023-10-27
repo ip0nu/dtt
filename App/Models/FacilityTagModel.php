@@ -4,7 +4,7 @@ namespace App\Models;
 
 class FacilityTagModel
 {
-    Const TABLE = 'facility_tag';
-    private array $fillble = [];
+    protected string $tableName = 'facility_tag';
+    protected array $fillble = [];
 
 }

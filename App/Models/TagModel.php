@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-class TagModel
+class TagModel extends BaseModel
 {
-    Const TABLE = 'tag';
-    private array $fillble = [];
+    protected string $tableName = 'tag';
+    protected array $fillble = [];
 
 }

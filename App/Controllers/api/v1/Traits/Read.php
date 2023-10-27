@@ -4,7 +4,7 @@ namespace App\Controllers\api\v1\Traits;
 
 use App\Entities\ResponseItem;
 use App\Entities\ResponsePageList;
-
+use App\Plugins\Http\Response as Status;
 trait read
 {
     /**
@@ -37,7 +37,7 @@ trait read
     {
         try {
             if ($resultPageList = $this->factory->buildList($page)) {
-                $responsePageList = new ResponsePageList($resultPageList, $page, $this->factory->getRowTotal());
+                $responsePageList = new ResponsePageList($resultPageList, $page, $this->factory->getTotalRowCount());
                 $respond = (new Status\ok($responsePageList));
             } else {
                 $respond = (new Status\NotFound(['message' => "result not found"]));

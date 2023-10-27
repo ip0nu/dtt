@@ -4,7 +4,7 @@ namespace App\Models;
 
 class LocationModel
 {
-    Const TABLE = 'loctaion';
-    private array $fillble = [];
+    protected string $tableName = 'loctaion';
+    protected array $fillble = [];
 
 }

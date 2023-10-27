@@ -4,7 +4,6 @@
 namespace App\Controllers;
 
 use App\Plugins\Di\Injectable;
-use App\Plugins\Http\Response as Status;
 
 class BaseController extends Injectable
 {
@@ -14,7 +13,7 @@ class BaseController extends Injectable
      * Constructor of this class
      */
     function __construct() {
-        $this->factory = new $this->getFactoryName($this->db, $this->getBoundModelName);
+        $this->factory = new $this->factoryName($this->db, $this->boundModelName);
     }
 
     /**
