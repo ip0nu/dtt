@@ -6,7 +6,6 @@ use App\Models\FacilityModel;
 
 class FacilityFactory extends BaseFactory
 {
-
     public function buildList(int $page): array
     {
         $rows       = $this->boundModel->getListResults($page);
