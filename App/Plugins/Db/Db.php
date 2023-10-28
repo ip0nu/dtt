@@ -106,13 +106,15 @@ class Db implements IDb {
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Db method that fetches the multiple results of the query and returns it
+     */
     public function fetchAll() {
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     /**
-     * function that fetches the results of the query
+     * Db method a single column from the next row of a result set and returns it
      */
     public function count() {
         return $this->stmt->fetchColumn();

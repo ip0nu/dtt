@@ -5,7 +5,7 @@ namespace App\Controllers\api\v1\Traits;
 use App\Entities\ResponseItem;
 use App\Entities\ResponsePageList;
 use App\Plugins\Http\Response as Status;
-trait read
+trait ReadTraits
 {
     /**
      * Controller method outputs a page list
@@ -17,7 +17,7 @@ trait read
         try {
             if ($result = $this->factory->buildById($id)) {
                 $responseItem = new ResponseItem($result);
-                $respond = (new Status\NotFound($responseItem));
+                $respond = (new Status\ok($responseItem));
             } else {
                 $respond = (new Status\NotFound(['message' => "result not found"]));
             }

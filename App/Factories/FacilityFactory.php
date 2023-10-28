@@ -14,9 +14,9 @@ class FacilityFactory extends BaseFactory
      * @param int $limit amount of records retrieved from the db, when not given default 10
      * @return void
      */
-    public function buildList(int $page, int $limit = 10): array
+    public function buildList(int $offset, int $limit = 10): array
     {
-        $rows       = $this->boundModel->getListResults($page, $limit);
+        $rows       = $this->boundModel->getListResults($offset, $limit);
         $facilities = [];
         if ($rows) {
             $locationModel = new LocationModel($this->db);
@@ -44,6 +44,23 @@ class FacilityFactory extends BaseFactory
         $facility['location'] = $locationModel->getById($facility['location_id']);
 
         return $facility;
+    }
+
+    /**
+     * BaseFactory method deletes an item by its id
+     * @param int $id the id of an item that need to be outputted.
+     * @return void
+     */
+    public function delete(int $id)
+    {
+        $facilityTagModel = new FacilityTagModel($this->db);
+        $tagModel = new TagModel($this->db);
+        $facilityTags = $facilityTagModel->getByFaciletyid($id);
+
+        foreach ($facilityTags AS $facilityTag){
+           // $tagModel->delete($facilityTag['tag_id']);
+        }
+        return true; //$this->boundModel->delete($id);
     }
 
     /**

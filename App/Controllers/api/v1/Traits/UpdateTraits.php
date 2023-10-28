@@ -2,7 +2,7 @@
 
 namespace App\Controllers\api\v1\Traits;
 
-trait Update
+trait UpdateTraits
 {
 
 }

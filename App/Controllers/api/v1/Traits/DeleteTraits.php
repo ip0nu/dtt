@@ -1,20 +1,16 @@
 <?php
 
-namespace App\Controllers\api\v1;
+namespace App\Controllers\api\v1\Traits;
 
-use App\Controllers\BaseController;
-use App\Plugins\Http\Exceptions;
+use App\Entities\ResponseItem;
 
-class FacilityController extends BaseController
+trait delete
 {
-    use \App\Controllers\Api\V1\Traits\CreateTraits;
-    use \App\Controllers\Api\V1\Traits\UpdateTraits;
-    use \App\Controllers\Api\V1\Traits\ReadTraits;
-    use \App\Controllers\Api\V1\Traits\DeleteTraits;
-    protected string $factoryName = 'App\Factories\FacilityFactory';
-    protected string $boundModelName = 'App\Models\FacilityModel';
-
-
+    /**
+     * Controller method deletes a item bu id
+     * @param int $id the id of an item that will be deleted
+     * @return void
+     */
     public function delete(int $id)
     {
         try {
