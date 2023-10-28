@@ -9,6 +9,7 @@ class BaseController extends Injectable
 {
     protected string $factoryName;
     protected string $boundModelName;
+
     /**
      * Constructor of this class
      */

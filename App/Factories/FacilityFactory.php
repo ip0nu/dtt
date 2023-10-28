@@ -8,6 +8,12 @@ use App\Models\LocationModel;
 
 class FacilityFactory extends BaseFactory
 {
+    /**
+     * Factory method builds a list of facilities
+     * @param int $offset offset of the db table of where the list starts
+     * @param int $limit amount of records retrieved from the db, when not given default 10
+     * @return void
+     */
     public function buildList(int $page, int $limit = 10): array
     {
         $rows       = $this->boundModel->getListResults($page, $limit);
@@ -25,6 +31,11 @@ class FacilityFactory extends BaseFactory
         return $facilities;
     }
 
+    /**
+     * Factory method builds a facility by its id
+     * @param int $id the id of a facility that need to be outputted.
+     * @return void
+     */
     public function buildById(int $id)
     {
         $facility             = parent::buildById($id);
@@ -35,11 +46,16 @@ class FacilityFactory extends BaseFactory
         return $facility;
     }
 
+    /**
+     * Factory method get the child tags from a facility by facilityId
+     * @param int $faciletyId the id of a facility .
+     * @return array
+     */
     private function getTagsByFacilityId(int $faciletyId): array
     {
         $facilityTagModel = new FacilityTagModel($this->db);
         $tagModel         = new TagModel($this->db);
-        $rows             = $facilityTagModel->getListResults();
+        $rows             = $facilityTagModel->getByFaciletyid($faciletyId);
         $tags             = [];
 
         foreach ($rows as $row) {

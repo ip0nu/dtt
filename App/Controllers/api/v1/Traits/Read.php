@@ -8,7 +8,8 @@ use App\Plugins\Http\Response as Status;
 trait read
 {
     /**
-     * Controller function outputs a page list
+     * Controller method outputs a page list
+     * @param int $id the id of an item that need to be outputted.
      * @return void
      */
     public function SingleItemById(int $id)
@@ -30,7 +31,8 @@ trait read
     }
 
     /**
-     * Controller function outputs a page list
+     * Controller method outputs a page list
+     * @param int $id the $page the page number requested of the page list.
      * @return void
      */
     public function pageList(int $page)

@@ -7,21 +7,19 @@ abstract class BaseModel
     protected $table;
     protected $db;
 
+    /**
+     * Constructor of this class
+     * @param $db
+     */
     function __construct($db)
     {
         $this->db = $db;
     }
 
-    public function getListResults(int $offset = 0, int $limit = 1000): mixed
-    {
-        $sql = sprintf("SELECT * FROM %s LIMIT %d OFFSET %d;", $this->tableName, $limit, $offset);
-        if ( ! $this->db->executeQuery($sql)) {
-            throw new Exception('query failed');
-        }
-
-        return $this->db->fetchAll();
-    }
-
+    /**
+     * BaseModel method that counts the rows in a db table
+     * @return mixed
+     */
     public function getTotalRowCount(): mixed
     {
         $sql = sprintf("SELECT count(*) FROM %s", $this->tableName);
@@ -32,6 +30,11 @@ abstract class BaseModel
         return $this->db->count();
     }
 
+    /**
+     * BaseModel method fet
+     * @param int $id the id of a row that needs to be queried .
+     * @return mixed
+     */
     public function getById(int $id): mixed
     {
         $sql = sprintf("SELECT * FROM %s WHERE id = :id", $this->tableName);
