@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-class LocationModel
+class LocationModel extends BaseModel
 {
-    protected string $tableName = 'loctaion';
+    protected string $tableName = 'location';
     protected array $fillble = [];
 
 }

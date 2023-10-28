@@ -100,10 +100,14 @@ class Db implements IDb {
     }
 
     /**
-     * function that fetches the results of the query
+     * function that fetches the one result of the query
      */
     public function fetch() {
-        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function fetchAll() {
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 

@@ -36,7 +36,8 @@ trait read
     public function pageList(int $page)
     {
         try {
-            if ($resultPageList = $this->factory->buildList($page)) {
+            $offset = ($page - 1) * 10;
+            if ($resultPageList = $this->factory->buildList($offset)) {
                 $responsePageList = new ResponsePageList($resultPageList, $page, $this->factory->getTotalRowCount());
                 $respond = (new Status\ok($responsePageList));
             } else {

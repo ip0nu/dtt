@@ -12,7 +12,7 @@ class FacilityController extends BaseController
     use \App\Controllers\Api\V1\Traits\update;
     use \App\Controllers\Api\V1\Traits\Read;
     use \App\Controllers\Api\V1\Traits\Delete;
-    protected string $factoryName = 'App/Factories/facilityFactory';
-    protected string $boundModelName = 'App/Models/factoryModel';
+    protected string $factoryName = 'App\Factories\FacilityFactory';
+    protected string $boundModelName = 'App\Models\FacilityModel';
 
 }

@@ -6,8 +6,10 @@ abstract class BaseFactory
 {
     protected $db;
     protected $boundModel;
-    public function __construct($db, string $boundModelName) {
-        $this->db = $db;
+
+    public function __construct($db, string $boundModelName)
+    {
+        $this->db         = $db;
         $this->boundModel = new $boundModelName($db);
     }
 
@@ -16,7 +18,8 @@ abstract class BaseFactory
         return $this->boundModel->getListResults($page);
     }
 
-    public function buildById(int $id) {
+    public function buildById(int $id)
+    {
         return $this->boundModel->getById($id);
     }
 

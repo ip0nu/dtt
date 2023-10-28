@@ -6,24 +6,25 @@ abstract class BaseModel
 {
     protected $table;
     protected $db;
-    function __construct($db) {
+
+    function __construct($db)
+    {
         $this->db = $db;
     }
 
-    public function getListResults(int $page, int $limit = 10): mixed
+    public function getListResults(int $offset = 0, int $limit = 1000): mixed
     {
-        $offset = ($page - 1) * 10;
-        $sql = sprintf("SELECT * FROM %s LIMIT %d OFFSET %d;",$this->tableName, $limit , $offset);
+        $sql = sprintf("SELECT * FROM %s LIMIT %d OFFSET %d;", $this->tableName, $limit, $offset);
         if ( ! $this->db->executeQuery($sql)) {
             throw new Exception('query failed');
         }
 
-        return $this->db->fetch();
+        return $this->db->fetchAll();
     }
 
     public function getTotalRowCount(): mixed
     {
-        $sql = sprintf("SELECT count(*) FROM %s",$this->tableName);
+        $sql = sprintf("SELECT count(*) FROM %s", $this->tableName);
         if ( ! $this->db->executeQuery($sql)) {
             throw new Exception('query failed');
         }
