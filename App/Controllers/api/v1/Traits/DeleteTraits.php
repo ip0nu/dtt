@@ -2,9 +2,9 @@
 
 namespace App\Controllers\api\v1\Traits;
 
-use App\Entities\ResponseItem;
+use App\Plugins\Http\Response as Status;
 
-trait delete
+trait DeleteTraits
 {
     /**
      * Controller method deletes a item bu id
@@ -14,8 +14,8 @@ trait delete
     public function delete(int $id)
     {
         try {
-            if ($this->factory->buildById($id)) {
-                $respond = (new Status\ok(['message' => "Item deleted"]));
+            if ($this->factory->delete($id)) {
+                $respond = (new Status\Ok(['message' => "Item deleted"]));
             } else {
                 $respond = (new Status\NotFound(['message' => "result not found"]));
             }

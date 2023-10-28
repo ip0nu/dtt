@@ -5,6 +5,7 @@ namespace App\Factories;
 use App\Models\TagModel;
 use App\Models\FacilityTagModel;
 use App\Models\LocationModel;
+use App\Plugins\Http\Exceptions;
 
 class FacilityFactory extends BaseFactory
 {
@@ -34,16 +35,17 @@ class FacilityFactory extends BaseFactory
     /**
      * Factory method builds a facility by its id
      * @param int $id the id of a facility that need to be outputted.
-     * @return void
+     * @return mixed
      */
-    public function buildById(int $id)
+    public function buildById(int $id): mixed
     {
-        $facility             = parent::buildById($id);
-        $locationModel        = new LocationModel($this->db);
-        $facility['tags']     = $this->getTagsByFacilityId($facility['id']);
-        $facility['location'] = $locationModel->getById($facility['location_id']);
+        if($result = parent::buildById($id)) {
+            $locationModel        = new LocationModel($this->db);
+            $result['tags']     = $this->getTagsByFacilityId($result['id']);
+            $result['location'] = $locationModel->getById($result['location_id']);
+        }
 
-        return $facility;
+        return $result;
     }
 
     /**

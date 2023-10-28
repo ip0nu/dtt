@@ -31,9 +31,9 @@ abstract class BaseFactory
     /**
      * BaseFactory method builds an item by its id
      * @param int $id the id of an item that need to be outputted.
-     * @return void
+     * @return mixed
      */
-    public function buildById(int $id)
+    public function buildById(int $id): mixed
     {
         return $this->boundModel->getById($id);
     }

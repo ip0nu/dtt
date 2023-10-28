@@ -14,21 +14,4 @@ class FacilityController extends BaseController
     protected string $factoryName = 'App\Factories\FacilityFactory';
     protected string $boundModelName = 'App\Models\FacilityModel';
 
-
-    public function delete(int $id)
-    {
-        try {
-            if ($this->factory->buildById($id)) {
-                $respond = (new Status\ok(['message' => "Item deleted"]));
-            } else {
-                $respond = (new Status\NotFound(['message' => "result not found"]));
-            }
-        } catch (Exception $e) {
-            error_log($e->getMessage());
-            // Respond with 500 (InternalServerError):
-            $respond = (new Status\InternalServerError(['message' => "something is wrong query"]));
-        }
-
-        $respond->send();
-    }
 }
