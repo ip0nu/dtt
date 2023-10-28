@@ -51,18 +51,23 @@ class FacilityFactory extends BaseFactory
     /**
      * BaseFactory method deletes an item by its id
      * @param int $id the id of an item that need to be outputted.
-     * @return void
+     * @return bool
      */
-    public function delete(int $id)
+    public function delete(int $id): bool
     {
+        if(!$this->boundModel->getById($id)){
+            return false;
+        }
+
         $facilityTagModel = new FacilityTagModel($this->db);
         $tagModel = new TagModel($this->db);
         $facilityTags = $facilityTagModel->getByFaciletyid($id);
 
         foreach ($facilityTags AS $facilityTag){
-           // $tagModel->delete($facilityTag['tag_id']);
+           $tagModel->delete($facilityTag['tag_id']);
         }
-        return true; //$this->boundModel->delete($id);
+
+        return $this->boundModel->delete($id);
     }
 
     /**

@@ -26,7 +26,7 @@ abstract class BaseModel
     {
         $sql = sprintf("SELECT * FROM %s LIMIT %d OFFSET %d;", $this->tableName, $limit, $offset);
         if ( ! $this->db->executeQuery($sql)) {
-            throw new Exception('query failed');
+            throw new \Exception('query failed');
         }
 
         return $this->db->fetchAll();
@@ -40,7 +40,7 @@ abstract class BaseModel
     {
         $sql = sprintf("SELECT count(*) FROM %s", $this->tableName);
         if ( ! $this->db->executeQuery($sql)) {
-            throw new Exception('query failed');
+            throw new \Exception('query failed');
         }
 
         return $this->db->count();
@@ -55,7 +55,7 @@ abstract class BaseModel
     {
         $sql = sprintf("SELECT * FROM %s WHERE id = :id", $this->tableName);
         if ( ! $this->db->executeQuery($sql, ['id' => $id])) {
-            throw new Exception('query failed');
+            throw new \Exception('query failed');
         }
 
         return $this->db->fetch();

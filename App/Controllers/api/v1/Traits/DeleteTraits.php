@@ -17,7 +17,7 @@ trait DeleteTraits
             if ($this->factory->delete($id)) {
                 $respond = (new Status\Ok(['message' => "Item deleted"]));
             } else {
-                $respond = (new Status\NotFound(['message' => "result not found"]));
+                $respond = (new Status\NotFound(['message' => "Item not deleted"]));
             }
         } catch (Exception $e) {
             error_log($e->getMessage());
